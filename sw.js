@@ -1,5 +1,5 @@
 // Ma Gestion Pro : fonctionne hors connexion. Change la version à chaque mise à jour de index.html.
-const V = 'mgp-v1';
+const V = 'mgp-v2';
 const SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './maskable-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(V).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(k => Promise.all(k.filter(x => x !== V).map(x => caches.delete(x)))).then(() => self.clients.claim())); });
